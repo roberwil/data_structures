@@ -33,10 +33,13 @@ void print_at_pos(List* list, int pos) {
 char* get_at_pos(List* list, int pos) {
 
     if (is_empty(list) || pos < 1 || pos > length(list))
-        return "[]\n"
-    else
-        return printf("[%d]\n", list->items[pos - 1].number);
-
+        return "[]\n";
+    else { 
+        static char result[10];
+        sprintf(result, "[%d]\n", list->items[pos - 1].number);
+        return result;
+    }
+    
 }
 
 int is_empty(List* list) {

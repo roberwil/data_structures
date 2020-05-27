@@ -2,11 +2,27 @@
 #include <stdlib.h>
 #include "static_list.h"
 
-void print_if(int condition, char* title) {
-    if (condition) 
-        printf("%s Yes!\n", title);
-    else
-        printf("%s No!\n", title);
+void print_if(int condition, char* title, char* yes, char* no) {
+
+    #ifndef nil
+    #define nil NULL
+    #endif
+
+    if (title != nil) 
+        printf("%s = ", title);
+
+    if (condition) {
+        if (yes == nil)
+            printf("Yes!\n");
+        else
+            printf("%s", yes);
+    } else {
+        if (no == nil)
+            printf("No!\n");
+        else 
+            printf("%s", no);
+    }
+
 }
 
 int main() {
@@ -14,16 +30,15 @@ int main() {
     ListItem item;
 
     init(&list);
-    print_if(is_empty(&list), "Empty?");
-    print_if(is_full(&list), "Full?");
+    print_if(is_empty(&list), "Empty", nil, nil);
+    print_if(is_full(&list), "Full", nil, nil);
     printf("Length: %d\n", length(&list));
 
     item.number = 12;
-    insert_at_start(&list, &item);
 
-    print(&list);
-    print_if(is_empty(&list), "Empty?");
-    print_if(is_full(&list), "Full?");
+    print_if(insert_at_start(&list, &item), "List[1]", get_at_pos(&list, 1), "[]");
+    print_if(is_empty(&list), "Empty", nil, nil);
+    print_if(is_full(&list), "Full", nil, nil);
     printf("Length: %d\n", length(&list));
 
     item.number = 33;
@@ -36,8 +51,8 @@ int main() {
     insert_at_start(&list, &item);
 
     print(&list);
-    print_if(is_empty(&list), "Empty?");
-    print_if(is_full(&list), "Full?");
+    print_if(is_empty(&list), "Empty", nil, nil);
+    print_if(is_full(&list), "Full", nil, nil);
     printf("Length: %d\n", length(&list));
 
     item.number = 111;
@@ -50,8 +65,8 @@ int main() {
     insert_at_end(&list, &item);
 
     print(&list);
-    print_if(is_empty(&list), "Empty?");
-    print_if(is_full(&list), "Full?");
+    print_if(is_empty(&list), "Empty", nil, nil);
+    print_if(is_full(&list), "Full", nil, nil);
     printf("Length: %d\n", length(&list));
 
     print_at_pos(&list, length(&list));
@@ -67,8 +82,8 @@ int main() {
     remove_at_pos(&list, 3);
 
     print(&list);
-    print_if(is_empty(&list), "Empty?");
-    print_if(is_full(&list), "Full?");
+    print_if(is_empty(&list), "Empty", nil, nil);
+    print_if(is_full(&list), "Full", nil, nil);
     printf("Length: %d\n", length(&list));
 
     return 0;

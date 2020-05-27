@@ -7,6 +7,7 @@
 #define MAX_SIZE 7
 #define FALSE    0
 #define TRUE     1
+#define nil      NULL
 
 typedef struct {
     int number;
@@ -19,7 +20,6 @@ typedef struct {
 
 void init(List* list);
 void print(List* list);
-void print_at_pos(List* list, int pos);
 
 int is_empty(List* list);
 int is_full(List* list);
@@ -32,5 +32,9 @@ int insert_at_pos(List* list, ListItem* item, int pos);
 int remove_at_start(List* list);
 int remove_at_end(List* list);
 int remove_at_pos(List* list, int pos);
+
+// Optional Methods
+void print_at_pos(List* list, int pos);
+char* get_at_pos(List* list, int pos);
 
 #endif

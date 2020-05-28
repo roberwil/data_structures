@@ -26,6 +26,31 @@ void print_if(int condition, char* title, char* yes, char* no) {
 }
 
 int main() {
-    printf("A random message!");
+    List list;
+    ListItem item;
+
+    init(list);
+    print_if(is_empty(list), "Empty", nil, nil);
+
+    item.number = 12;
+    insert_start(list, &item);
+
+    item.number = 0;
+    insert_start(list, &item);
+
+    item.number = 1;
+    insert_start(list, &item);
+
+    item.number = 2;
+    insert_end(list, &item);
+
+    item.number = 5;
+    insert_end(list, &item);
+
+    item.number = 13;
+    insert_end(list, &item);
+
+    print(list);
+
     return 0;
 }

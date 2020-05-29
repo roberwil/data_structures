@@ -36,4 +36,7 @@ int len(List list);
 int insert_start(List list, ListItem* item);
 int insert_end(List list, ListItem* item);
 
+int remove_start(List list);
+int remove_end(List list);
+
 #endif

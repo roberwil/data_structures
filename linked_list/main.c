@@ -53,6 +53,12 @@ int main() {
     print_if(is_empty(list), "Empty", nil, nil);
     print(list);
     printf("Length: %d\n", len(list));
+
+    remove_start(list);
+    remove_end(list);
+
+    print(list);
+    printf("Length: %d\n", len(list));
     
     destroy(list);
     return 0;

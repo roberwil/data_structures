@@ -24,7 +24,7 @@ void print(List list) {
 
     Node nd = list->start; 
     int _len = len(list);
-    
+
     for (int i = 0; i < _len; i++) {
         if (i == 0)
             printf("[%d, ", nd->item.number);
@@ -82,6 +82,34 @@ int insert_end(List list, ListItem *item) {
 
     list->end = nd;
     list->len++;
+
+    return TRUE;
+}
+
+int remove_start(List list) {
+    if (is_empty(list)) return FALSE;
+
+    Node first_node = list->start;
+
+    list->start = first_node->next;
+    free(first_node);
+    list->len--;
+
+    return TRUE;
+}
+
+int remove_end(List list) {
+    if (is_empty(list)) return FALSE;
+    
+    int i, _len = len(list);
+    Node last_node = list->end, nd = list->start;
+
+    for (int i = 0; i < _len - 2; i++)
+        nd = nd->next;
+
+    list->end = nd;
+    free(last_node);
+    list->len--;
 
     return TRUE;
 }

@@ -50,7 +50,10 @@ int main() {
     item.number = 13;
     insert_end(list, &item);
 
+    print_if(is_empty(list), "Empty", nil, nil);
     print(list);
-
+    printf("Length: %d\n", len(list));
+    
+    destroy(list);
     return 0;
 }

@@ -91,10 +91,13 @@ int remove_start(List list) {
 
     Node first_node = list->start;
 
-    list->start = first_node->next;
+    if (list->start == list->end)
+        list->start = list->end = nil;
+    else 
+        list->start = first_node->next;
+        
     free(first_node);
     list->len--;
-
     return TRUE;
 }
 
@@ -102,14 +105,20 @@ int remove_end(List list) {
     if (is_empty(list)) return FALSE;
     
     int i, _len = len(list);
-    Node last_node = list->end, nd = list->start;
+    Node nd = list->start;
 
     for (int i = 0; i < _len - 2; i++)
         nd = nd->next;
 
-    list->end = nd;
-    free(last_node);
-    list->len--;
+    if (list->start == list->end) {
+        free(list->start);
+        list->start = list->end = nil;
+    } else {
+        free(list->end);
+        list->end = nd;
+        list->end->next = nil;
+    }
 
+    list->len--;
     return TRUE;
 }

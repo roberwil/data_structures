@@ -49,9 +49,11 @@ int push(Stack* stack, StackItem* item) {
 
 /**
  * Remove an item from the top of the stack*/
-int pop(Stack* stack) {
+int pop(Stack* stack, StackItem* removed_item) {
     // Cannot remove if the stack is empty :p
     if (is_empty(stack)) return false;
+    // Retrieve the item to be removed
+    *removed_item = stack->items[size(stack) - 1];
     // the stack decreases, meaning the last top of it will be overwritten
     stack->len--;
     return true;

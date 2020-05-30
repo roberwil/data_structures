@@ -29,6 +29,6 @@ int is_full(Stack* stack);
 int size(Stack* stack);
 
 int push(Stack* stack, StackItem* item);
-int pop(Stack* stack);
+int pop(Stack* stack, StackItem* removed_item);
 
 #endif

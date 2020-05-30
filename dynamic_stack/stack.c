@@ -20,18 +20,18 @@ void print(Stack stack) {
     Node node = stack->top;
     int len = size(stack);
 
-    printf("top [ ");
+    printf("top [");
 
     for (int i = 0; i < len; i++) {
         if (i != len - 1)
             printf("%d -> ", node->item.number);
         else
-            printf("%d ", node->item.number);
+            printf("%d", node->item.number);
         
         node = node->previous;
     }
 
-    printf(" ] bottom\n");
+    printf("] bottom\n");
 }
 
 int is_empty(Stack stack) {

@@ -16,11 +16,19 @@ typedef struct {
     int number;
 } StackItem;
 
-typedef struct stack {
+typedef struct {
     StackItem items[MAX_LEN];
     int len;
-} stack;
+} Stack;
 
-typedef stack* Stack;
+void init(Stack* stack);
+void print(Stack* stack);
+
+int is_empty(Stack* stack);
+int is_full(Stack* stack);
+int size(Stack* stack);
+
+int push(Stack* stack, StackItem* item);
+int pop(Stack* stack);
 
 #endif

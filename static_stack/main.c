@@ -31,8 +31,9 @@ int main() {
 
     init(&stack);
     print_if(is_empty(&stack), "Empty", nil, nil);
-    print(&stack);
+    print_if(is_full(&stack), "Full", nil, nil);
     printf("Length: %d\n", size(&stack));
+    print(&stack);
 
     item.number = 12;
     push(&stack, &item);
@@ -49,17 +50,22 @@ int main() {
     item.number = 55;
     push(&stack, &item);
 
+    item.number = 666;
+    print_if(push(&stack, &item), "Inserted", nil, nil);
+
     print_if(is_empty(&stack), "Empty", nil, nil);
-    print(&stack);
+    print_if(is_full(&stack), "Full", nil, nil);
     printf("Length: %d\n", size(&stack));
+    print(&stack);
 
     pop(&stack);
     pop(&stack);
     pop(&stack);
 
     print_if(is_empty(&stack), "Empty", nil, nil);
-    print(&stack);
+    print_if(is_full(&stack), "Full", nil, nil);
     printf("Length: %d\n", size(&stack));
+    print(&stack);
 
     return 0;
 }

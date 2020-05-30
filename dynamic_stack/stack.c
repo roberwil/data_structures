@@ -76,6 +76,8 @@ int push(Stack stack, StackItem* item) {
     return true;
 }
 
+/**
+ * Remove an item from the top of the stack*/
 int pop(Stack stack) {
     // Cannot remove if the stack is empty :p
     if (is_empty(stack)) return false;

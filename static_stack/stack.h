@@ -10,7 +10,7 @@
 #define and   &&
 #define or    ||
 
-#define MAX_LEN 10
+#define MAX_LEN 5
 
 typedef struct {
     int number;

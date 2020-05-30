@@ -55,7 +55,6 @@ int len(List list) {
     return list->len;
 }
 
-//TODO: update to match doubly linked list standards
 int insert_start(List list, ListItem *item) {
     // Create the node to be inserted
     Node nd = (Node)malloc(sizeof(node));
@@ -64,15 +63,21 @@ int insert_start(List list, ListItem *item) {
 
     // Set the node item
     nd->item = *item;
+    // The new head points to no previous node
+    nd->previous = nil;
 
-    // if the list is empty, the the head and the tail are the same
+    // if the list is empty
     if (is_empty(list)) {
+        // The head is the tail
         list->end = nd;
-        // the first and last node point no nowhere
+        // the head and the tail have no next or previous node
         nd->next = nil;
-    } else
+    } else {
         // The new node now points to the old head
         nd->next = list->start;
+        // The old head has the new head as the previous node
+        list->start->previous = nd;
+    }
 
     // The new node becomes the head
     list->start = nd;
@@ -82,7 +87,6 @@ int insert_start(List list, ListItem *item) {
     return TRUE;
 }
 
-//TODO: update to match doubly linked list standards
 int insert_end(List list, ListItem *item) {
     // Create the node to be inserted
     Node nd = (Node)malloc(sizeof(node));
@@ -93,12 +97,17 @@ int insert_end(List list, ListItem *item) {
     // Since it is an insertion at the end, the node has to point to nowhere
     nd->next = nil;
 
-    if (is_empty(list))
+    if (is_empty(list)) {
         // if the list is empty, the head and the tail have to be the same
         list->start = nd;
-    else
-        // the old tail now points to the new node 
+        // There is no previous node to point to
+        nd->previous = nil;
+    } else {
+        // the old tail has as next node the new tail 
         list->end->next = nd;
+        // The new tail has as previous node the old tail
+        nd->previous = list->end;
+    }
 
     // The new node becomes the tail
     list->end = nd;
@@ -108,7 +117,6 @@ int insert_end(List list, ListItem *item) {
     return TRUE;
 }
 
-//TODO: update to match doubly linked list standards
 int remove_start(List list) {
     // If the list is empty, there is nothing to remove
     if (is_empty(list)) return FALSE;
@@ -119,10 +127,13 @@ int remove_start(List list) {
     if (list->start == list->end)
         // if list is of length 1, then the head and the tail must point to nowhere
         list->start = list->end = nil;
-    else 
+    else {
         // the node pointed by the old head becomes the head
         list->start = list->start->next;
-    
+        // the frist node has no previous node
+        list->start->previous =  nil;
+    }
+
     // Free the old head
     free(first_node);
     // The length of the list decreases
@@ -131,20 +142,9 @@ int remove_start(List list) {
     return TRUE;
 }
 
-//TODO: update to match doubly linked list standards
 int remove_end(List list) {
     // If the list is empty, there is nothing to remove
     if (is_empty(list)) return FALSE;
-    
-    int i, _len = len(list);
-    // Get the first node
-    Node nd = list->start;
-
-    /**
-     * When the loop is over, "nd" will be the penultimate node,
-     * which is to become the tail*/
-    for (int i = 0; i < _len - 2; i++)
-        nd = nd->next;
 
     // If the list is of size of 1
     if (list->start == list->end) {
@@ -153,12 +153,14 @@ int remove_end(List list) {
         // Head an tail point to nowhere
         list->start = list->end = nil;
     } else {
+        // Get the last node
+        Node last_node = list->end;
+        // The penultimate node, which is the previous node of the last node, is now the last node 
+        list->end = last_node->previous;
+        // The new tail has no next node
+        list->end->next = nil;
         // Free the old tail
-        free(list->end);
-        // The penultimate node points to nowhere
-        nd->next = nil;
-        // The penultimate node becomes the tail
-        list->end = nd;
+        free(last_node);
     }
 
     // The length of the list decreases

@@ -22,6 +22,9 @@ void destroy(Stack stack) {
         // The penultimate node is now the top of the stack
         node = temp;
     }
+
+    // Initialize the stack
+    init(stack);
 }
 
 void print(Stack stack) {

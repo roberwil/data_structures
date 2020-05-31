@@ -22,8 +22,8 @@ typedef struct {
 } QueueItem;
 
 typedef struct _node {
-    QueueItem items[MAX_LEN];
-    int len;
+    QueueItem item;
+    struct _node* next;
 } _node;
 
 typedef struct {
@@ -36,8 +36,8 @@ typedef _node* Node;
 typedef queue* Queue;
 
 void init(Queue q);
-void print(Queue q);
 void destroy(Queue q);
+void print(Queue q);
 
 int size(Queue q);
 int is_empty(Queue q);

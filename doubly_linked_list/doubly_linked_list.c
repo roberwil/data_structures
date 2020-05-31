@@ -19,6 +19,9 @@ void destroy(List list) {
         // Set the next node (used in the next iteration)
         nd = temp;
     }
+
+    // Initialize the list
+    init(list);
 }
 
 void print(List list) {

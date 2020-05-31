@@ -29,7 +29,43 @@ int main() {
     Queue q;
     QueueItem item, removed_item;
 
-    printf("ping");
+    init(q);
+    print_if(is_empty(q), "Empty", nil, nil);
+    printf("Length: %d\n", size(q));
+    print(q);
 
+    item.number = 12;
+    print_if(enqueue(q, &item), "Inserted", nil, nil);
+
+    item.number = 22;
+    enqueue(q, &item);
+
+    item.number = 33;
+    enqueue(q, &item);
+
+    item.number = 44;
+    enqueue(q, &item);
+
+    item.number = 55;
+    enqueue(q, &item);
+
+    print_if(is_empty(q), "Empty", nil, nil);
+    printf("Length: %d\n", size(q));
+    print(q);
+
+    dequeue(q, &removed_item);
+    printf("Removed %d\n", removed_item.number);
+
+    dequeue(q, &removed_item);
+    printf("Removed %d\n", removed_item.number);
+
+    dequeue(q, &removed_item);
+    printf("Removed %d\n", removed_item.number);
+
+    print_if(is_empty(q), "Empty", nil, nil);
+    printf("Length: %d\n", size(q));
+    print(q);
+
+    destroy(q);
     return 0;
 }

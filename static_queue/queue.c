@@ -8,7 +8,7 @@ void init(Queue* q) {
 void print(Queue* q) {
     int i, len = size(q);
     
-    printf("begin [");
+    printf("start [");
     
     for (i = 0; i < len; i++)
         if (i != len - 1)

@@ -70,11 +70,14 @@ int insert_start(List list, ListItem *item) {
     // if the list is empty, the the head and the tail are the same
     if (is_empty(list)) {
         list->end = nd;
-        // the first and last node point no nowhere
-        nd->next = nil;
-    } else
+        // the first and last node point to themselves
+        nd->next = nd;
+    } else {
         // The new node now points to the old head
         nd->next = list->start;
+        // The last node now points to the new node, which is going to be the first
+        list->end->next = nd;
+    }
 
     // The new node becomes the head
     list->start = nd;
@@ -91,15 +94,19 @@ int insert_end(List list, ListItem *item) {
     if (nd == nil) return FALSE;
     // Set the node item
     nd->item = *item;
-    // Since it is an insertion at the end, the node has to point to nowhere
-    nd->next = nil;
 
-    if (is_empty(list))
+    if (is_empty(list)) {
         // if the list is empty, the head and the tail have to be the same
         list->start = nd;
-    else
+        // The last node points to the first node
+        nd->next = nd;
+    }
+    else {
         // the old tail now points to the new node 
         list->end->next = nd;
+        // The new node points to the first node, after all, it's going to be the last node
+        nd->next = list->start;
+    }
 
     // The new node becomes the tail
     list->end = nd;
@@ -119,10 +126,13 @@ int remove_start(List list) {
     if (list->start == list->end)
         // if list is of length 1, then the head and the tail must point to nowhere
         list->start = list->end = nil;
-    else 
+    else {
         // the node pointed by the old head becomes the head
         list->start = list->start->next;
-    
+        // the last node points to the first node
+        list->end->next = list->start;
+    }
+
     // Free the old head
     free(first_node);
     // The length of the list decreases
@@ -154,10 +164,10 @@ int remove_end(List list) {
     } else {
         // Free the old tail
         free(list->end);
-        // The penultimate node points to nowhere
-        nd->next = nil;
         // The penultimate node becomes the tail
         list->end = nd;
+        // the tail points to the head
+        list->end->next = list->start;
     }
 
     // The length of the list decreases

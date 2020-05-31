@@ -4,6 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * A stack complies with LIFO, which means that the last inserted item
+ * is always the first to be removed, hence LIFO - Last in, first out
+ */
+
 #define nil   NULL
 #define true  1
 #define false 0

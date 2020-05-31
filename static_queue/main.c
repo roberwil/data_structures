@@ -26,6 +26,51 @@ void print_if(int condition, char* title, char* yes, char* no) {
 }
 
 int main() {
-    printf("ping\n");
+    Queue q;
+    QueueItem item, removed_item;
+
+    init(&q);
+    print_if(is_empty(&q), "Empty", nil, nil);
+    print_if(is_full(&q), "Full", nil, nil);
+    printf("Length: %d\n", size(&q));
+    print(&q);
+
+    item.number = 12;
+    enqueue(&q, &item);
+
+    item.number = 22;
+    enqueue(&q, &item);
+
+    item.number = 33;
+    enqueue(&q, &item);
+
+    item.number = 44;
+    enqueue(&q, &item);
+
+    item.number = 55;
+    enqueue(&q, &item);
+
+    item.number = 666;
+    print_if(enqueue(&q, &item), "Inserted", nil, nil);
+
+    print_if(is_empty(&q), "Empty", nil, nil);
+    print_if(is_full(&q), "Full", nil, nil);
+    printf("Length: %d\n", size(&q));
+    print(&q);
+
+    dequeue(&q, &removed_item);
+    printf("Removed %d\n", removed_item.number);
+
+    dequeue(&q, &removed_item);
+    printf("Removed %d\n", removed_item.number);
+
+    dequeue(&q, &removed_item);
+    printf("Removed %d\n", removed_item.number);
+
+    print_if(is_empty(&q), "Empty", nil, nil);
+    print_if(is_full(&q), "Full", nil, nil);
+    printf("Length: %d\n", size(&q));
+    print(&q);
+
     return 0;
 }

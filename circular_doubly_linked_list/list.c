@@ -66,20 +66,22 @@ int insert_start(List list, ListItem *item) {
 
     // Set the node item
     nd->item = *item;
-    // The new head points to no previous node
-    nd->previous = nil;
 
     // if the list is empty
     if (is_empty(list)) {
         // The head is the tail
         list->end = nd;
-        // the head and the tail have no next or previous node
-        nd->next = nil;
+        // Since it's the single node, its previous and next nodes point to itself
+        nd->previous = nd->next = nd;
     } else {
         // The new node now points to the old head
         nd->next = list->start;
+        // The new node has the last node as previous node, since it's about to be the first node
+        nd->previous = list->end;
         // The old head has the new head as the previous node
         list->start->previous = nd;
+        // The last node has as next node the new node
+        list->end->next = nd;
     }
 
     // The new node becomes the head
@@ -103,13 +105,17 @@ int insert_end(List list, ListItem *item) {
     if (is_empty(list)) {
         // if the list is empty, the head and the tail have to be the same
         list->start = nd;
-        // There is no previous node to point to
-        nd->previous = nil;
+        // Since it's the single node, its previous and next nodes point to itself
+        nd->previous = nd->next = nd;
     } else {
         // the old tail has as next node the new tail 
         list->end->next = nd;
         // The new tail has as previous node the old tail
         nd->previous = list->end;
+        // The new tail has the first node as next node
+        nd->next = list->start;
+        // The head has as previous node the new tail
+        list->start->previous = nd;
     }
 
     // The new node becomes the tail
@@ -133,8 +139,10 @@ int remove_start(List list) {
     else {
         // the node pointed by the old head becomes the head
         list->start = list->start->next;
-        // the frist node has no previous node
-        list->start->previous =  nil;
+        // the first node has as previous node the last node (tail)
+        list->start->previous =  list->end;
+        // the tail has as next node the first node (head)
+        list->end->next = list->start;
     }
 
     // Free the old head
@@ -160,8 +168,10 @@ int remove_end(List list) {
         Node last_node = list->end;
         // The penultimate node, which is the previous node of the last node, is now the last node 
         list->end = last_node->previous;
-        // The new tail has no next node
-        list->end->next = nil;
+        // The new tail has the head as next node
+        list->end->next = list->start;
+        // The head has as previous node the tail
+        list->start->previous = list->end;
         // Free the old tail
         free(last_node);
     }

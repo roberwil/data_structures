@@ -133,7 +133,7 @@ int remove_start(List list) {
     else {
         // the node pointed by the old head becomes the head
         list->start = list->start->next;
-        // the frist node has no previous node
+        // the first node has no previous node
         list->start->previous =  nil;
     }
 

@@ -14,6 +14,7 @@ typedef struct {
 
 typedef struct node {
     ListItem item;
+    struct node* previous;
     struct node* next;
 } node;
 

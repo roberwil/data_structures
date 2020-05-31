@@ -78,13 +78,15 @@ int push(Stack stack, StackItem* item) {
 
 /**
  * Remove an item from the top of the stack*/
-int pop(Stack stack) {
+int pop(Stack stack, StackItem* removed_item) {
     // Cannot remove if the stack is empty :p
     if (is_empty(stack)) return false;
     // Get the top of the stack
     Node node = stack->top;
     // The penultimate node becomes the top of the stack
     stack->top = node->previous;
+    // Retrieve the item to be removed
+    *removed_item = node->item;
     // Free the old top
     free(node);
     // The stack decreases

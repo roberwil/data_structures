@@ -27,12 +27,12 @@ void print_if(int condition, char* title, char* yes, char* no) {
 
 int main() {
     Stack stack;
-    StackItem item;
+    StackItem item, removed_item;
 
     init(stack);
     print_if(is_empty(stack), "Empty", nil, nil);
-    print(stack);
     printf("Length: %d\n", size(stack));
+    print(stack);
 
     item.number = 12;
     push(stack, &item);
@@ -50,16 +50,21 @@ int main() {
     push(stack, &item);
 
     print_if(is_empty(stack), "Empty", nil, nil);
-    print(stack);
     printf("Length: %d\n", size(stack));
+    print(stack);
 
-    pop(stack);
-    pop(stack);
-    pop(stack);
+    pop(stack, &removed_item);
+    printf("Removed %d\n", removed_item.number);
+
+    pop(stack, &removed_item);
+    printf("Removed %d\n", removed_item.number);
+
+    pop(stack, &removed_item);
+    printf("Removed %d\n", removed_item.number);
 
     print_if(is_empty(stack), "Empty", nil, nil);
-    print(stack);
     printf("Length: %d\n", size(stack));
+    print(stack);
 
     destroy(stack);
     return 0;

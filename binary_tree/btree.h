@@ -28,8 +28,10 @@ typedef _node* Node;
 typedef _btree* BTree;
 
 void init(BTree tree);
-Node create_root(BTree tree, BTreeItem* item);
+int is_empty(BTree tree);
+int is_root(BTree tree, Node node);
 
+Node create_root(BTree tree, BTreeItem* item);
 Node insert_right(Node node, BTreeItem* item);
 Node insert_left(Node node, BTreeItem* item);
 

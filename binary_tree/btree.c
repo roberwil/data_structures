@@ -4,6 +4,14 @@ void init(BTree tree) {
     tree->root = nil;
 }
 
+int is_empty(BTree tree) {
+    return tree->root == nil;
+}
+
+int is_root(BTree tree, Node node) {
+    return node == tree->root;
+}
+
 Node create_root(BTree tree, BTreeItem* item) {
     Node root = (Node)malloc(sizeof(_node));
 
@@ -16,9 +24,9 @@ Node create_root(BTree tree, BTreeItem* item) {
 }
 
 Node insert_right(Node node, BTreeItem* item) {
-
+    return nil;
 }
 
 Node insert_left(Node node, BTreeItem* item) {
-    
+    return nil;
 }

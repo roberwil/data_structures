@@ -32,9 +32,17 @@ Node insert_right(Node parent, BTreeItem* item) {
     son->left = son->right = nil;
     parent->right = son;
 
-    return nil;
+    return son;
 }
 
 Node insert_left(Node parent, BTreeItem* item) {
-    return nil;
+    Node son = (Node)malloc(sizeof(_node));
+
+    if (son == nil) return false;
+
+    son->item = *item;
+    son->left = son->right = nil;
+    parent->left = son;
+
+    return son;
 }

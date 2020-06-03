@@ -5,17 +5,21 @@ void init(BTree tree) {
 }
 
 int is_empty(BTree tree) {
-    return tree->root == nil;
+    return tree->root is nil;
 }
 
 int is_root(BTree tree, Node node) {
-    return node == tree->root;
+    return node is tree->root;
+}
+
+int is_leaf(Node node) {
+    return node->left is nil and node->right is nil;
 }
 
 Node create_root(BTree tree, BTreeItem* item) {
     Node root = (Node)malloc(sizeof(_node));
 
-    if (root == nil) return false;
+    if (root is nil) return false;
 
     root->item = *item;
     root->left = root->right = nil;

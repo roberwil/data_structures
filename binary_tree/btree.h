@@ -9,6 +9,7 @@
 #define nil   NULL
 #define and   &&
 #define or    ||
+#define is    ==  
 
 typedef struct {
     int number;
@@ -30,6 +31,7 @@ typedef _btree* BTree;
 void init(BTree tree);
 int is_empty(BTree tree);
 int is_root(BTree tree, Node node);
+int is_leaf(Node node);
 
 Node create_root(BTree tree, BTreeItem* item);
 Node insert_right(Node parent, BTreeItem* item);

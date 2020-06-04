@@ -27,6 +27,12 @@ void print_if(int condition, char* title, char* yes, char* no) {
 
 
 int main() {
-    printf("ping");
+    BTreeItem item;
+    BTree tree;
+
+    init(tree);
+    item.number = 0;
+    create_root(tree, &item);
+
     return 0;
 }

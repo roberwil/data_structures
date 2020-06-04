@@ -20,45 +20,37 @@ int is_leaf(Node node) {
     return node->left is nil and node->right is nil;
 }
 
-Node create_root(BTree tree, BTreeItem* item) {
-    // create the root node
-    Node root = (Node)malloc(sizeof(_node));
+Node create_node(BTreeItem* item) {
+    // create the node
+    Node node = (Node)malloc(sizeof(_node));
     // if, somehow, memory is not available
-    if (root is nil) return false;
+    if (node is nil) return nil;
     // set the content
-    root->item = *item;
-    // the root does not have any children, yet
-    root->left = root->right = nil;
+    node->item = *item;
+    // the node does not have any children, yet
+    node->left = node->right = nil;
 
-    return root;
+    return node; 
+}
+
+Node create_root(BTree tree, BTreeItem* item) {
+    // Set the root of the tree
+    tree->root = create_node(item);
+    // return the root
+    return tree->root;
+
 }
 
 Node insert_right(Node parent, BTreeItem* item) {
-    // create the son
-    Node son = (Node)malloc(sizeof(_node));
-    // if, somehow, memory is unavailable
-    if (son == nil) return false;
-    // set the content
-    son->item = *item;
-    // son does not have children yet
-    son->left = son->right = nil;
-    // parent has now a son on the right
-    parent->right = son;
-
-    return son;
+    // set the right child of the parent node
+    parent->right = create_node(item);
+    // return the child
+    return parent->right;
 }
 
 Node insert_left(Node parent, BTreeItem* item) {
-    // create the son
-    Node son = (Node)malloc(sizeof(_node));
-    // if, somehow, memory is unavailable
-    if (son == nil) return false;
-    // set the content
-    son->item = *item;
-    // son does not have children yet
-    son->left = son->right = nil;
-     // parent has now a son on the left   
-    parent->left = son;
-
-    return son;
+    // set the left child of the parent node
+    parent->left = create_node(item);
+    // return the child
+    return parent->left;
 }

@@ -33,6 +33,10 @@ int is_empty(BTree tree);
 int is_root(BTree tree, Node node);
 int is_leaf(Node node);
 
+int node_depth(Node node);
+int node_height(Node node);
+int node_degree(Node node);
+
 Node create_node(BTreeItem* item);
 Node create_root(BTree tree, BTreeItem* item);
 Node insert_right(Node parent, BTreeItem* item);

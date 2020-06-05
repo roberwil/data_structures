@@ -29,7 +29,7 @@ Node create_node(BTreeItem* item) {
     node->item = *item;
     // the node does not have any children, yet
     node->left = node->right = nil;
-
+    // return the node, if created
     return node; 
 }
 
@@ -38,7 +38,6 @@ Node create_root(BTree tree, BTreeItem* item) {
     tree->root = create_node(item);
     // return the root
     return tree->root;
-
 }
 
 Node insert_right(Node parent, BTreeItem* item) {

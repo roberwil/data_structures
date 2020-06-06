@@ -20,6 +20,13 @@ int is_leaf(Node node) {
     return node->left is nil and node->right is nil;
 }
 
+int node_depth(Node node) { 
+    return true;
+}
+
+int node_height(Node node)  {return true; }
+int node_degree(Node node) {return true;}
+
 Node create_node(BTreeItem* item) {
     // create the node
     Node node = (Node)malloc(sizeof(_node));

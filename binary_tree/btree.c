@@ -25,7 +25,11 @@ int node_depth(Node node) {
 }
 
 int node_height(Node node)  {return true; }
-int node_degree(Node node) {return true;}
+int node_degree(Node node) {
+    if (is_leaf(node)) return 0;
+    if (node->left is nil or node->right is nil) return 1;
+    return 2;
+}
 
 Node create_node(BTreeItem* item) {
     // create the node

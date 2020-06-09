@@ -11,6 +11,12 @@
 #define or    ||
 #define is    ==  
 
+typedef enum {
+    PRE_ORDER = 1,
+    IN_ORDER,
+    POST_ORDER  
+} TraverseType;
+
 typedef struct {
     int number;
 } BTreeItem;
@@ -33,9 +39,14 @@ int is_empty(BTree tree);
 int is_root(BTree tree, Node node);
 int is_leaf(Node node);
 
-int node_depth(Node node);
+int node_depth(BTree tree, Node node);
 int node_height(Node node);
 int node_degree(Node node);
+
+void traverse(BTree tree, TraverseType type);
+void traverse_pre_order(BTree tree);
+void traverse_in_order(BTree tree);
+void traverse_post_order(BTree tree);
 
 Node create_node(BTreeItem* item);
 Node create_root(BTree tree, BTreeItem* item);

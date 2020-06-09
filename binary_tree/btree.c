@@ -15,19 +15,33 @@ int is_root(BTree tree, Node node) {
     return node is tree->root;
 }
 
+/**
+ *  A node is a leaf if it does not have any children*/
 int is_leaf(Node node) {
-    // if the node does not have any children
     return node->left is nil and node->right is nil;
 }
 
-int node_depth(Node node) { 
-    return true;
+/**
+ * The depth of a node is the size of the path from the root to the node*/
+int node_depth(BTree tree, Node node) { 
+    if (is_root(tree, node)) return 0;
+    else return 0; 
 }
 
-int node_height(Node node)  {return true; }
+/**
+ * The height of a node is the size of the path from the node to its deepest leaf*/
+int node_height(Node node) {
+    return 0;
+}
+
+/**
+ * The degree of a node is the number of sons it has*/
 int node_degree(Node node) {
+    // if the node is a leaf, then it has no sons
     if (is_leaf(node)) return 0;
+    // if one of the sons of the node is nil, then its degree is 1
     if (node->left is nil or node->right is nil) return 1;
+    // Both sons exist
     return 2;
 }
 

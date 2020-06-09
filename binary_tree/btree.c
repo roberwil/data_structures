@@ -21,6 +21,7 @@ int is_leaf(Node node) {
     return node->left is nil and node->right is nil;
 }
 
+//TODO: Finish implementation
 /**
  * The depth of a node is the size of the path from the root to the node*/
 int node_depth(BTree tree, Node node) { 
@@ -28,6 +29,7 @@ int node_depth(BTree tree, Node node) {
     else return 0; 
 }
 
+//TODO: Finish implementation
 /**
  * The height of a node is the size of the path from the node to its deepest leaf*/
 int node_height(Node node) {
@@ -44,6 +46,11 @@ int node_degree(Node node) {
     // Both sons exist
     return 2;
 }
+
+void traverse(BTree tree, TraverseType type);
+void traverse_pre_order(BTree tree);
+void traverse_in_order(BTree tree);
+void traverse_post_order(BTree tree);
 
 Node create_node(BTreeItem* item) {
     // create the node

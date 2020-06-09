@@ -21,16 +21,16 @@ int is_leaf(Node node) {
     return node->left is nil and node->right is nil;
 }
 
-//TODO: Finish implementation
 /**
+ * TODO: Finish implementation
  * The depth of a node is the size of the path from the root to the node*/
 int node_depth(BTree tree, Node node) { 
     if (is_root(tree, node)) return 0;
     else return 0; 
 }
 
-//TODO: Finish implementation
 /**
+ * TODO: Finish implementation
  * The height of a node is the size of the path from the node to its deepest leaf*/
 int node_height(Node node) {
     return 0;
@@ -47,10 +47,62 @@ int node_degree(Node node) {
     return 2;
 }
 
-void traverse(BTree tree, TraverseType type);
-void traverse_pre_order(BTree tree);
-void traverse_in_order(BTree tree);
-void traverse_post_order(BTree tree);
+/**
+ * Visit all the nodes of the tree is a specific order*/
+void traverse(BTree tree, TraverseType type) {
+    if (is_empty(tree)) {
+        printf("*\n");
+        return;
+    }
+
+    switch (type) {
+        case PRE_ORDER:
+            traverse_pre_order(tree);
+            break;
+
+        case IN_ORDER:
+            traverse_in_order(tree);
+            break;
+
+        case POST_ORDER:
+            traverse_post_order(tree);
+            break;
+    
+        default:
+            printf("*\n");
+            break;
+    }
+}
+
+/**
+ * TODO: Finish implementation
+ * Visit the root
+ * Visit the left tree
+ * Visit the right tree
+ */
+void traverse_pre_order(BTree tree) {
+
+}
+
+/**
+ * TODO: Finish implementation
+ * Visit the left tree
+ * Visit the root
+ * Visit the right tree
+ */
+void traverse_in_order(BTree tree) {
+
+}
+
+/**
+ * TODO: Finish implementation
+ * Visit the left tree
+ * Visit the right tree
+ * Visit the root
+ */
+void traverse_post_order(BTree tree) {
+
+}
 
 Node create_node(BTreeItem* item) {
     // create the node

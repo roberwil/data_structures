@@ -81,7 +81,7 @@ void traverse(BTree tree, TraverseType type) {
  * Visit the right tree
  */
 void traverse_pre_order(BTree tree) {
-
+    
 }
 
 /**

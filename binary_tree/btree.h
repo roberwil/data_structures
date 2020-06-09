@@ -18,7 +18,7 @@ typedef enum {
 } TraverseType;
 
 typedef struct {
-    int number;
+    char c;
 } BTreeItem;
 
 typedef struct _node {

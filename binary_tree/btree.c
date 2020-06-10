@@ -58,17 +58,23 @@ void traverse(BTree tree, TraverseType type) {
     switch (type) {
         case PRE_ORDER:
             printf("--PRE_ORDER\n");
+            printf("[ ");
             traverse_pre_order(tree->root);
+            printf("]\n\n");
             break;
 
         case IN_ORDER:
             printf("--IN_ORDER\n");
+            printf("[ ");
             traverse_in_order(tree->root);
+            printf("]\n\n");
             break;
 
         case POST_ORDER:
             printf("--POST_ORDER\n");
+            printf("[ ");
             traverse_post_order(tree->root);
+            printf("]\n\n");
             break;
     
         default:
@@ -78,21 +84,19 @@ void traverse(BTree tree, TraverseType type) {
 }
 
 /**
- * TODO: Finish implementation
  * Visit the root
  * Visit the left tree
  * Visit the right tree
  */
 void traverse_pre_order(Node root) {
     if (root != nil) {
-        printf("%c\n", root->item.c);
+        printf("%c ", root->item.c);
         traverse_pre_order(root->left);
         traverse_pre_order(root->right);
     }
 }
 
 /**
- * TODO: Finish implementation
  * Visit the left tree
  * Visit the root
  * Visit the right tree
@@ -100,13 +104,12 @@ void traverse_pre_order(Node root) {
 void traverse_in_order(Node root) {
     if (root != nil) {
         traverse_in_order(root->left);
-        printf("%c\n", root->item.c);
+        printf("%c ", root->item.c);
         traverse_in_order(root->right);
     }
 }
 
 /**
- * TODO: Finish implementation
  * Visit the left tree
  * Visit the right tree
  * Visit the root
@@ -115,7 +118,7 @@ void traverse_post_order(Node root) {
     if (root != nil) {
         traverse_post_order(root->left);
         traverse_post_order(root->right);
-        printf("%c\n", root->item.c);
+        printf("%c ", root->item.c);
     }
 }
 

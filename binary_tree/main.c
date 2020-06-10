@@ -31,6 +31,18 @@ int main() {
     BTree tree;
     Node A, B, C, D, E, F, G, H, I;
 
+    /**
+     * 
+     *         A
+     *      /     \
+     *    B         C
+     *  /         /   \
+     * D        E       F
+     *  \     /   \
+     *   G   H     I
+     * 
+     */ 
+
     init(tree);
 
     item.c = 'A';
@@ -40,7 +52,7 @@ int main() {
     B = insert_left(A, &item);
 
     item.c = 'C';
-    C = insert_left(A, &item);
+    C = insert_right(A, &item);
 
     item.c = 'D';
     D = insert_left(B, &item);
@@ -49,16 +61,16 @@ int main() {
     E = insert_left(C, &item);
 
     item.c = 'F';
-    F = insert_left(C, &item);
+    F = insert_right(C, &item);
 
     item.c = 'G';
-    G = insert_left(D, &item);
+    G = insert_right(D, &item);
 
     item.c = 'H';
     H = insert_left(E, &item);
 
     item.c = 'I';
-    I = insert_left(E, &item);
+    I = insert_right(E, &item);
 
     traverse(tree, PRE_ORDER);
     traverse(tree, IN_ORDER);

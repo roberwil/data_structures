@@ -48,42 +48,6 @@ int node_degree(Node node) {
 }
 
 /**
- * Visit all the nodes of the tree is a specific order*/
-void traverse(BTree tree, TraverseType type) {
-    if (is_empty(tree)) {
-        printf("*\n");
-        return;
-    }
-
-    switch (type) {
-        case PRE_ORDER:
-            printf("--PRE_ORDER\n");
-            printf("[ ");
-            traverse_pre_order(tree->root);
-            printf("]\n\n");
-            break;
-
-        case IN_ORDER:
-            printf("--IN_ORDER\n");
-            printf("[ ");
-            traverse_in_order(tree->root);
-            printf("]\n\n");
-            break;
-
-        case POST_ORDER:
-            printf("--POST_ORDER\n");
-            printf("[ ");
-            traverse_post_order(tree->root);
-            printf("]\n\n");
-            break;
-    
-        default:
-            printf("*\n");
-            break;
-    }
-}
-
-/**
  * Visit the root
  * Visit the left tree
  * Visit the right tree
@@ -119,6 +83,42 @@ void traverse_post_order(Node root) {
         traverse_post_order(root->left);
         traverse_post_order(root->right);
         printf("%c ", root->item.c);
+    }
+}
+
+/**
+ * Visit all the nodes of the tree is a specific order*/
+void traverse(BTree tree, TraverseType type) {
+    if (is_empty(tree)) {
+        printf("*\n");
+        return;
+    }
+
+    switch (type) {
+        case PRE_ORDER:
+            printf("--PRE_ORDER\n");
+            printf("[ ");
+            traverse_pre_order(tree->root);
+            printf("]\n\n");
+            break;
+
+        case IN_ORDER:
+            printf("--IN_ORDER\n");
+            printf("[ ");
+            traverse_in_order(tree->root);
+            printf("]\n\n");
+            break;
+
+        case POST_ORDER:
+            printf("--POST_ORDER\n");
+            printf("[ ");
+            traverse_post_order(tree->root);
+            printf("]\n\n");
+            break;
+    
+        default:
+            printf("*\n");
+            break;
     }
 }
 

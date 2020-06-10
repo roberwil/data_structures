@@ -44,9 +44,9 @@ int node_height(Node node);
 int node_degree(Node node);
 
 void traverse(BTree tree, TraverseType type);
-void traverse_pre_order(BTree tree);
-void traverse_in_order(BTree tree);
-void traverse_post_order(BTree tree);
+void traverse_pre_order(Node root);
+void traverse_in_order(Node root);
+void traverse_post_order(Node root);
 
 Node create_node(BTreeItem* item);
 Node create_root(BTree tree, BTreeItem* item);

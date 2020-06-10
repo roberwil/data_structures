@@ -60,5 +60,9 @@ int main() {
     item.c = 'I';
     I = insert_left(E, &item);
 
+    traverse(tree, PRE_ORDER);
+    traverse(tree, IN_ORDER);
+    traverse(tree, POST_ORDER);
+
     return 0;
 }

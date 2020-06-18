@@ -87,6 +87,15 @@ void traverse_post_order(Node root) {
 }
 
 /**
+ * TODO: Implement function
+ * Visit the root
+ * Visit each level
+ */
+void traverse_level_order(Node root) {
+    return;
+}
+
+/**
  * Visit all the nodes of the tree is a specific order*/
 void traverse(BTree tree, TraverseType type) {
     if (is_empty(tree)) {
@@ -95,24 +104,31 @@ void traverse(BTree tree, TraverseType type) {
     }
 
     switch (type) {
-        case PRE_ORDER:
+        case PRE_ORDER: //Depth-first search
             printf("--PRE_ORDER\n");
             printf("[ ");
             traverse_pre_order(tree->root);
             printf("]\n\n");
             break;
 
-        case IN_ORDER:
+        case IN_ORDER: //Depth-first search
             printf("--IN_ORDER\n");
             printf("[ ");
             traverse_in_order(tree->root);
             printf("]\n\n");
             break;
 
-        case POST_ORDER:
+        case POST_ORDER: //Depth-first search
             printf("--POST_ORDER\n");
             printf("[ ");
             traverse_post_order(tree->root);
+            printf("]\n\n");
+            break;
+
+        case LEVEL_ORDER: //Breath-first search
+            printf("--LEVEL_ORDER\n");
+            printf("[ ");
+            traverse_level_order(tree->root);
             printf("]\n\n");
             break;
     

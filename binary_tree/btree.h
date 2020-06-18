@@ -14,7 +14,8 @@
 typedef enum {
     PRE_ORDER = 1,
     IN_ORDER,
-    POST_ORDER  
+    POST_ORDER,
+    LEVEL_ORDER
 } TraverseType;
 
 typedef struct {

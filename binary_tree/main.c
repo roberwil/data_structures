@@ -75,6 +75,7 @@ int main() {
     traverse(tree, PRE_ORDER);
     traverse(tree, IN_ORDER);
     traverse(tree, POST_ORDER);
+    traverse(tree, LEVEL_ORDER);
 
     return 0;
 }
